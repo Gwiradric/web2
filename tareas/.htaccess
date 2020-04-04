@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 second"
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -l
+    RewriteRule ^[css|img|js].*$ - [L]
+    RewriteRule ^(.*)$ route.php?action=$1 [QSA,L]
+</IfModule>
